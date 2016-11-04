@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Contact Exchanging</string>
+
+    <string name="register">REGISTER</string>
+    <string name="login">LOGIN</string>
+    <!--hint-->
+    <string name="username">User name</string>
+    <string name="userpass">User password</string>
+
+    <!--register-->
+    <string name="login_r"> &lt; Login</string>
+    <string name="password">Password</string>
+    <string name="rePasword">Re-Password</string>
+    <string name="email">E-mail</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="submit">SUBMIT</string>
+    <string name="title_activity_profile_user">ProfileUser</string>
+
+    <!--profile-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="logout">Logout</string>
+    <string name="listContacts">List Contacts</string>
+    <string name="nfc">NFC</string>
+
+    <!--list contacts-->
+    <string name="Profile">&lt; My profile</string>
+    <string name="delete">DELETE</string>
+    <string name="list">&lt; List Contact</string>
+
+    <!--KEY & ID-->
+    <string name="url_get_token">https://api.molt.in/oauth/access_token</string>
+    <string name="url_check_pass_login">https://api.molt.in/v1/customers/token</string>
+    <string name="url_create_register">https://api.molt.in/v1/customers</string>
+
+    <string name="k_wow_contacts">EXoHmJbiuoEjML8KVSdC9anShevMZ0ljCo4ZDE5yCM</string>
+    <string name="id_wow_contatcs">FHFAClgqlWWxAdY1zWrLiJy7aplqS0bzWBKsEQmWbB</string>
+
+</resources>
