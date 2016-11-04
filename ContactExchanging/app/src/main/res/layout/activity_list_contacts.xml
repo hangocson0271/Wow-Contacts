@@ -27,7 +27,10 @@
         android:maxLines="1"
         android:lines="1"
         android:layout_toLeftOf="@+id/imageView6"
-        android:layout_toStartOf="@+id/imageView6" />
+        android:layout_toStartOf="@+id/imageView6"
+        android:enabled="false"
+
+        />
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"

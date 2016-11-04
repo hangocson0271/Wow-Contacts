@@ -8,15 +8,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import app.z.com.contactexchanging.Interface.Interface;
 
 public class ProfileUser extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView txtPhone,txtUser,txtEmail,txtbusiness;
-    LoginActivity loginActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +27,19 @@ public class ProfileUser extends AppCompatActivity
 
         setContentView(R.layout.activity_profile_user);
 
-        loginActivity = new LoginActivity();
-
         txtUser =(TextView)findViewById(R.id.firstNamePro5);
         txtPhone = (TextView)findViewById(R.id.lastNamePro5);
         txtEmail =(TextView)findViewById(R.id.emailPro5);
         txtbusiness =(TextView)findViewById(R.id.business);
 
-        txtUser.setText(loginActivity.getUsername());
-        txtEmail.setText(loginActivity.getUserEmail());
+        Intent callerIntent=getIntent();
+        Bundle packageFromCaller=
+                callerIntent.getBundleExtra("MyPack");
+
+        txtUser.setText(packageFromCaller.getString("userName"));
+        txtEmail.setText(packageFromCaller.getString("userEmail"));
         txtbusiness.setText("null");
-        txtPhone.setText(loginActivity.getUserPhone());
+        txtPhone.setText(packageFromCaller.getString("userPhone"));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

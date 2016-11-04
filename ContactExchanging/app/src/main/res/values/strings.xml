@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Contact Exchanging</string>
+    <string name="app_name">Wow Contacts</string>
 
     <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
@@ -36,4 +36,6 @@
     <string name="k_wow_contacts">EXoHmJbiuoEjML8KVSdC9anShevMZ0ljCo4ZDE5yCM</string>
     <string name="id_wow_contatcs">FHFAClgqlWWxAdY1zWrLiJy7aplqS0bzWBKsEQmWbB</string>
 
+    <!--check permission-->
+    <string name="runtime_permissions_txt">Please enable ALL permissions from app settings.</string>
 </resources>

@@ -7,12 +7,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon_app"
+
+        android:icon="@drawable/icon_app_co"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+
+        <activity android:name=".RegisterActivity"
+            android:windowSoftInputMode="stateHidden"/>
+
         <activity
             android:name=".ProfileUser"
             android:label="@string/title_activity_profile_user"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme" />
         <activity android:name=".ListContacts" />
-        <activity android:name=".ViewContact"></activity>
+        <activity android:name=".ViewContact"
+            ></activity>
     </application>
 
 </manifest>
