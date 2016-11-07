@@ -2,14 +2,18 @@ package app.z.com.contactexchanging;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,27 +29,28 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
     Button btnLogin;
     TextView txtRegister;
     EditText edUser,edPassword;
-    String username,userPass;
+    CheckBox RMCheck;
+    private static final int REQUEST_INTERNET = 20;
 
+    String username,userPass;
     String messErr;
     ProgressDialog pDialog;
     String url_get_token ;
     String url_login ;
     String key_wow,id_wow;
-
+    SharedPreferences loginPreferences;
+    SharedPreferences.Editor loginPrefsEditor;
     String userName,userPhone,userEmail;
+    Boolean saveLogin;
     //private static final int REQUEST_INTERNET = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        checkPermision();
         setContentView(R.layout.activity_login);
-
         pDialog = new ProgressDialog(this);
-
-        //checkPermision();
-
 
         id_wow = getString(R.string.id_wow_contatcs);
         key_wow =getString(R.string.k_wow_contacts);
@@ -54,9 +59,20 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
         btnLogin = (Button)findViewById(R.id.btnLogin);
         txtRegister =(TextView)findViewById(R.id.changeRegister);
-
         edUser = (EditText)findViewById(R.id.user_email123);
         edPassword =(EditText)findViewById(R.id.user_password123);
+        RMCheck =(CheckBox)findViewById(R.id.RMCheck);
+
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+
+        if (saveLogin == true) {
+            edUser.setText(loginPreferences.getString("username", ""));
+            edPassword.setText(loginPreferences.getString("password", ""));
+            RMCheck.setChecked(true);
+        }
+
 
         btnLogin.setOnClickListener(this);
         txtRegister.setOnClickListener(this);
@@ -64,7 +80,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
     @Override
     public void onPermissionsGranted(int requestCode) {
-
+        Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
     }
 
 
@@ -74,7 +90,6 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
             case R.id.btnLogin:
 
                 checkNetWork();
-
                 checklogin();
                 break;
             case R.id.changeRegister:
@@ -104,8 +119,23 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
     void checklogin(){
 
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(edUser.getWindowToken(), 0);
+
         username = edUser.getText().toString();
         userPass= edPassword.getText().toString();
+
+        if (RMCheck.isChecked()) {
+            loginPrefsEditor.putBoolean("saveLogin", true);
+            loginPrefsEditor.putString("username", username);
+            loginPrefsEditor.putString("password", userPass);
+            loginPrefsEditor.commit();
+        } else {
+            loginPrefsEditor.clear();
+            loginPrefsEditor.commit();
+        }
+
+
 
         new GetContacts().execute();
     }
@@ -137,7 +167,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                 tk.execute(HttpHandler.RequestMethod.POST);
                 String jsonToken = tk.getResponse();
 
-                Log.i("getJSONlogin",jsonToken);
+                Log.i("getJSONlo gin",jsonToken);
 
                 String tokenJson,tokenType;
                 JSONObject jsonObject = new JSONObject(jsonToken);
@@ -186,7 +216,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         }
     }
 
-/*
+
     public void checkPermision(){
         LoginActivity.super.requestAppPermissions(new
                         String[]{Manifest.permission.NFC,
@@ -195,7 +225,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         }, R.string
                         .runtime_permissions_txt
                 , REQUEST_INTERNET);
-    }*/
+    }
     public String showMess(){
         return messErr;
     }

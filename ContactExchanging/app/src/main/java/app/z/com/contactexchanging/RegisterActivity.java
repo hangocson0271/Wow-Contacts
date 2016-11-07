@@ -87,6 +87,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      userPassword =edPassword.getText().toString();
      userRePassword =edRePassword.getText().toString();
      userPhone = edPhone.getText().toString();
+     String[] parts = userPassword.split("");
+
         if (userPhone.equals(a)==true||userName.equals(a)==true||userPassword.equals(a)==true||userRePassword.equals(a)==true||userEmail.equals(a)==true){
             showErr.setText("Can't be blank if you want register!");
         }
@@ -94,16 +96,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             if (userPassword.equals(userRePassword)==false){
                 showErr.setText("Password and RePassword not same!");
             }
-
+            else if(parts.length<3){
+                showErr.setText("Password need more characters");
+            }
+            else if (parts.length>10){
+                showErr.setText("Password too long");
+            }
             else {
                 RegiterAcc();
             }
         }
     }
     private void RegiterAcc(){
+
         new GetContacts().execute();
 
     }
+
+
     public String showMess123(){
         return messErr;
     }

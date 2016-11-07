@@ -20,7 +20,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
         <ImageView
-            android:layout_marginTop="10dp"
+
             android:layout_marginBottom="8dp"
             android:layout_width="150dp"
             android:layout_height="100dp"
@@ -52,7 +52,7 @@
             android:layout_marginLeft="30dp"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:src="@drawable/ic_user"
+            android:src="@drawable/e_mail"
             android:id="@+id/ic_user"
             />
         <EditText
@@ -90,6 +90,16 @@
             android:layout_alignTop="@+id/ic_password"
             android:layout_alignLeft="@+id/user_email123"
             android:layout_alignStart="@+id/user_email123" />
+        <CheckBox
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="26dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remeber me"
+            android:id="@+id/RMCheck"
+            android:layout_below="@+id/user_password123"
+            android:layout_alignLeft="@+id/ic_password"
+            android:layout_alignStart="@+id/ic_password" />
     </RelativeLayout>
 
     <Button
