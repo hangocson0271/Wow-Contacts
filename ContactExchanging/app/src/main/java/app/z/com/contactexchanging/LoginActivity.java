@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
     EditText edUser,edPassword;
     CheckBox RMCheck;
     private static final int REQUEST_INTERNET = 20;
+    private String id_user;
 
     String username,userPass;
     String messErr;
@@ -78,10 +80,6 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         txtRegister.setOnClickListener(this);
     }
 
-    @Override
-    public void onPermissionsGranted(int requestCode) {
-        Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
-    }
 
 
     @Override
@@ -96,6 +94,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
                 change2Register();
                 break;
+
         }
     }
 
@@ -111,7 +110,8 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         bundle.putString("userName",userName);
         bundle.putString("userEmail",userEmail);
         bundle.putString("userPhone",userPhone);
-
+        bundle.putString("userPassword",userPass);
+        bundle.putString("user_id",id_user);
         IT2.putExtra("MyPack",bundle);
         startActivity(IT2);
     }
@@ -167,8 +167,6 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                 tk.execute(HttpHandler.RequestMethod.POST);
                 String jsonToken = tk.getResponse();
 
-                Log.i("getJSONlo gin",jsonToken);
-
                 String tokenJson,tokenType;
                 JSONObject jsonObject = new JSONObject(jsonToken);
                 tokenJson = jsonObject.optString("access_token");
@@ -188,6 +186,8 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                     String result = jsonObject1.optString("result");
                     JSONObject jsonObject2 = new JSONObject(result);
 
+                    id_user = jsonObject2.optString("id");
+                    Log.i(id_user,"97124");
                     userName = jsonObject2.optString("first_name");
                     userPhone =jsonObject2.optString("last_name");
                     userEmail =jsonObject2.optString("email");
@@ -216,23 +216,28 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         }
     }
 
-
     public void checkPermision(){
         LoginActivity.super.requestAppPermissions(new
-                        String[]{Manifest.permission.NFC,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        String[]{
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
         }, R.string
                         .runtime_permissions_txt
                 , REQUEST_INTERNET);
     }
+
+
+    @Override
+    public void onPermissionsGranted(int requestCode) {
+    }
+
+
     public String showMess(){
         return messErr;
     }
 
-public void checkNetWork(){
+    public void checkNetWork(){
 
-        String statusN="";
         ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
         boolean is3g = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
@@ -243,13 +248,9 @@ public void checkNetWork(){
 
         if (!is3g && !isWifi)
         {
-            statusN="Please make sure your Network Connection is ON ";
+            String statusN="Please make sure your Network Connection is ON ";
+            Toast.makeText(getBaseContext(),statusN,Toast.LENGTH_SHORT).show();
         }
-        else if (is3g){
-            statusN ="3g on";
-        }
-        else if (isWifi){statusN = "wifi on";}
 
-        Toast.makeText(getBaseContext(),statusN,Toast.LENGTH_SHORT).show();
     }
 }

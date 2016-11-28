@@ -3,6 +3,8 @@
 
     <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
+
+    <string name="remenber">Remember Password</string>
     <!--hint-->
     <string name="username">User name</string>
     <string name="userpass">User password</string>
@@ -32,7 +34,7 @@
     <string name="url_get_token">https://api.molt.in/oauth/access_token</string>
     <string name="url_check_pass_login">https://api.molt.in/v1/customers/token</string>
     <string name="url_create_register">https://api.molt.in/v1/customers</string>
-
+    <string name="url_edit_user">https://api.molt.in/v1/customers/</string>
     <string name="k_wow_contacts">EXoHmJbiuoEjML8KVSdC9anShevMZ0ljCo4ZDE5yCM</string>
     <string name="id_wow_contatcs">FHFAClgqlWWxAdY1zWrLiJy7aplqS0bzWBKsEQmWbB</string>
 

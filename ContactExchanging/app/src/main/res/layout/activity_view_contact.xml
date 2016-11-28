@@ -16,7 +16,7 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView12"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="5dp"
@@ -33,19 +33,19 @@
             android:layout_height="wrap_content"
             android:text="@string/list"
             android:textStyle="italic"
-            android:id="@+id/change2List"
+            android:id="@+id/change2List2"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Jimmy Jackson"
+
             android:textStyle="bold"
             android:layout_marginTop="8dp"
             android:textSize="25dp"
             android:textColor="@color/txt_color"
-            android:id="@+id/fullName"
-            android:layout_below="@+id/imageView1"
+            android:id="@+id/fullName2"
+            android:layout_below="@+id/imageView12"
             android:layout_centerHorizontal="true" />
 
 
@@ -54,9 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:id="@+id/shape_3"
+            android:id="@+id/shape_32"
             android:background="@color/secound_backgroud"
-            android:layout_below="@+id/fullName"
+            android:layout_below="@+id/fullName2"
             >
             <ImageView
                 android:layout_marginLeft="30dp"
@@ -64,93 +64,94 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/ic_user"
-                android:id="@+id/imageView2" />
+                android:id="@+id/imageView22" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jimmy"
+
                 android:gravity="center_horizontal"
-                android:id="@+id/firstNamePro5"
+                android:id="@+id/firstNamePro52"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="@color/txt_color"
-                android:layout_above="@+id/imageView3"
+                android:layout_above="@+id/imageView32"
                 android:layout_centerHorizontal="true" />
 
 
             <ImageView
-                android:layout_below="@+id/imageView2"
+                android:layout_below="@+id/imageView22"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:src="@drawable/ic_user"
-                android:id="@+id/imageView3" />
+                android:src="@drawable/phone"
+                android:id="@+id/imageView32" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jackson"
+
                 android:gravity="center_horizontal"
-                android:id="@+id/lastNamePro5"
+                android:id="@+id/lastNamePro52"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="@color/txt_color"
-                android:layout_alignBottom="@+id/imageView3"
-                android:layout_alignLeft="@+id/firstNamePro5"
-                android:layout_alignStart="@+id/firstNamePro5" />
+                android:layout_alignBottom="@+id/imageView32"
+                android:layout_alignLeft="@+id/firstNamePro52"
+                android:layout_alignStart="@+id/firstNamePro52" />
 
 
             <ImageView
-                android:layout_below="@+id/imageView3"
+                android:layout_below="@+id/imageView32"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/e_mail"
-                android:id="@+id/imageView4" />
+                android:id="@+id/imageView42" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="abc@gmail.com"
+
                 android:gravity="center_horizontal"
-                android:id="@+id/emailPro5"
+                android:id="@+id/emailPro52"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="@color/txt_color"
-                android:layout_alignBottom="@+id/imageView4"
-                android:layout_alignLeft="@+id/firstNamePro5"
-                android:layout_alignStart="@+id/firstNamePro5" />
+                android:layout_alignBottom="@+id/imageView42"
+                android:layout_alignLeft="@+id/firstNamePro52"
+                android:layout_alignStart="@+id/firstNamePro52" />
 
             <ImageView
-                android:layout_below="@+id/imageView4"
+                android:layout_below="@+id/imageView42"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/ic_bussiness"
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView52"
                 android:layout_marginBottom="60dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NASAEN company"
+
                 android:gravity="center_horizontal"
-                android:id="@+id/business"
+                android:id="@+id/business2"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="@color/txt_color"
-                android:layout_alignBottom="@+id/imageView5"
-                android:layout_alignLeft="@+id/firstNamePro5"
-                android:layout_alignStart="@+id/firstNamePro5" />
+                android:layout_alignBottom="@+id/imageView52"
+                android:layout_alignLeft="@+id/firstNamePro52"
+                android:layout_alignStart="@+id/firstNamePro52" />
         </RelativeLayout>
         <Button
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
-            android:layout_below="@+id/shape_3"
+            android:layout_below="@+id/shape_32"
             android:text="@string/delete"
+            android:enabled="false"
             android:textStyle="bold"
             android:id="@+id/deleteContact"
             android:textSize="28dp"

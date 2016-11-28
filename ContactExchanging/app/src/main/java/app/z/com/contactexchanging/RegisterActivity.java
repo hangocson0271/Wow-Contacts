@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         txtLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+
     }
 
     @Override
@@ -71,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.back2Login:
                 change2Login();
                 break;
+
         }
     }
 
@@ -190,7 +193,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
     public void checkNetWork(){
 
-        String statusN="";
+
         ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
         boolean is3g = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
@@ -201,13 +204,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         if (!is3g && !isWifi)
         {
-            statusN="Please make sure your Network Connection is ON ";
+            String statusN="Please make sure your Network Connection is ON ";
+            Toast.makeText(getBaseContext(),statusN,Toast.LENGTH_SHORT).show();
         }
-        else if (is3g){
-            statusN ="3g on";
-        }
-        else if (isWifi){statusN = "wifi on";}
 
-        Toast.makeText(getBaseContext(),statusN,Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -65,6 +65,7 @@
             android:layout_marginRight="5dp"
             android:maxLines="1"
             android:lines="1"
+            android:inputType="text"
             android:hint="@string/email"
             android:id="@+id/user_email123"
             />
@@ -86,16 +87,17 @@
             android:maxLines="1"
             android:lines="1"
             android:id="@+id/user_password123"
+            android:inputType="textPassword"
             android:password="true"
             android:layout_alignTop="@+id/ic_password"
             android:layout_alignLeft="@+id/user_email123"
             android:layout_alignStart="@+id/user_email123" />
         <CheckBox
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="26dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remeber me"
+            android:text="@string/remenber"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/RMCheck"
             android:layout_below="@+id/user_password123"
             android:layout_alignLeft="@+id/ic_password"

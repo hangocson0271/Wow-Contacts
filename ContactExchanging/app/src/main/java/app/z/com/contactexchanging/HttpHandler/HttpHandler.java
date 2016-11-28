@@ -3,11 +3,14 @@ package app.z.com.contactexchanging.HttpHandler;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
@@ -39,7 +42,7 @@ public class HttpHandler {
         return message;
     }
 
-    public enum RequestMethod {GET,POST
+    public enum RequestMethod {GET,POST,PUT,DELETE
     }
 
     public int getResponseCode() {
@@ -66,20 +69,15 @@ public class HttpHandler {
     public void execute(RequestMethod method) throws Exception
     {
         switch(method) {
-            case GET:
-            {
+            case GET: {
                 String combinedParams = "";
-                if(!params.isEmpty()){
+                if (!params.isEmpty()) {
                     combinedParams += "?";
-                    for(BasicNameValuePair p : params)
-                    {
-                        String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(),"UTF-8");
-                        if(combinedParams.length() > 1)
-                        {
-                            combinedParams  +=  "&" + paramString;
-                        }
-                        else
-                        {
+                    for (BasicNameValuePair p : params) {
+                        String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
+                        if (combinedParams.length() > 1) {
+                            combinedParams += "&" + paramString;
+                        } else {
                             combinedParams += paramString;
                         }
                     }
@@ -88,29 +86,53 @@ public class HttpHandler {
                 HttpGet request = new HttpGet(url + combinedParams);
 
                 //add headers
-                for(BasicNameValuePair h : headers)
-                {
+                for (BasicNameValuePair h : headers) {
                     request.addHeader(h.getName(), h.getValue());
                 }
 
                 executeRequest(request, url);
                 break;
             }
-            case POST:
-            {
+            case POST: {
                 HttpPost request = new HttpPost(url);
                 //add headers
-                for(BasicNameValuePair h : headers)
-                {
+                for (BasicNameValuePair h : headers) {
                     request.addHeader(h.getName(), h.getValue());
                 }
 
-                if(!params.isEmpty()){
+                if (!params.isEmpty()) {
                     request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
                 }
                 executeRequest(request, url);
                 break;
             }
+            case PUT: {
+                HttpPut request = new HttpPut(url);
+                //add headers
+                for (BasicNameValuePair h : headers) {
+                    request.addHeader(h.getName(), h.getValue());
+                }
+                if (!params.isEmpty()) {
+                    request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+                }
+                executeRequest(request, url);
+                break;
+            }
+            case DELETE:
+            {
+                HttpDelete request = new HttpDelete(url);
+                //add headers
+                for (BasicNameValuePair h : headers) {
+                    request.addHeader(h.getName(), h.getValue());
+                }
+                if (!params.isEmpty()) {
+
+                    //request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+
+                }
+                executeRequest(request, url);
+                break;
+        }
         }
     }
 
